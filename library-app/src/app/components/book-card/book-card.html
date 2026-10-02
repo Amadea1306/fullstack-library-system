@@ -1,0 +1,15 @@
+<div class="card" [style.border-left]="book.available ? '6px solid #198754' : '6px solid #dc3545'">
+  <h3>{{ book.title }}</h3>
+  <p><strong>Author:</strong> {{ book.author }} | <strong>ISBN:</strong> {{ book.isbn }}</p>
+  <p><strong>Category:</strong> {{ book.category }} | <strong>Year:</strong> {{ book.publishedYear }}</p>
+
+  <app-book-status-badge [available]="book.available"></app-book-status-badge>
+
+  <div class="card-actions">
+    <button (click)="onEdit()" class="btn btn-edit">Edit</button>
+    <button (click)="onToggle()" class="btn btn-toggle">
+      {{ book.available ? 'Mark as Borrowed' : 'Mark as Returned' }}
+    </button>
+    <button (click)="onDelete()" class="btn btn-delete">Delete</button>
+  </div>
+</div>

@@ -1,0 +1,14 @@
+# Angular (Frontend)
+library-app/node_modules/
+library-app/.angular/
+library-app/dist/
+
+# Spring Boot (Backend)
+library-backend/target/
+library-backend/.mvn/wrapper/maven-wrapper.jar
+library-backend/*.iml
+
+# IDE & System
+.idea/
+.vscode/
+*.log

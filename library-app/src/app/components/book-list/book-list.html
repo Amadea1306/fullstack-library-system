@@ -1,0 +1,38 @@
+<div>
+  <h2>Book Catalog</h2>
+
+  <div class="toolbar">
+    <div>
+      <button (click)="filterByCategory('ALL')" class="filter-btn" [class.active-filter]="currentCategory === 'ALL'">All</button>
+      <button (click)="filterByCategory('Fiction')" class="filter-btn" [class.active-filter]="currentCategory === 'Fiction'">Fiction</button>
+      <button (click)="filterByCategory('Business')" class="filter-btn" [class.active-filter]="currentCategory === 'Technology'">Business</button>
+      <button (click)="filterByCategory('Science')" class="filter-btn" [class.active-filter]="currentCategory === 'Science'">Science</button>
+      <button (click)="filterByCategory('Philosophy')" class="filter-btn" [class.active-filter]="currentCategory === 'Science'">Philosophy</button>
+    </div>
+
+    <button (click)="navigateToAddBook()" class="btn btn-primary" style="padding: 8px 16px;">
+      + Add New Book
+    </button>
+  </div>
+
+  <hr />
+
+  @if (books.length === 0) {
+  <p style="color: #888;">No books found matching this filter criteria.</p>
+  } @else {
+  <p>Displaying {{ books.length }} book record(s):</p>
+
+  @for (book of books; track book.id; let idx = $index; let total = $count; let isFirst = $first) {
+  <div style="margin-bottom: 5px;">
+    <small style="color: gray;">Record #{{ idx + 1 }} of {{ total }} {{ isFirst ? '(Top Result)' : '' }}</small>
+
+    <app-book-card
+      [book]="book"
+      (edit)="handleEdit($event)"
+      (delete)="handleDelete($event)"
+      (toggleStatus)="handleToggle($event)">
+    </app-book-card>
+  </div>
+  }
+  }
+</div>
